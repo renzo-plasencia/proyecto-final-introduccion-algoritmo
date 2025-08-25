@@ -48,7 +48,7 @@ public class ListarTerrenos extends JFrame {
 	 * Create the frame.
 	 */
 	public ListarTerrenos() {
-		setTitle("Lista de Terrenos");
+		setTitle("Consultar Terrenos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 468, 377);
 		contentPane = new JPanel();
@@ -141,6 +141,8 @@ public class ListarTerrenos extends JFrame {
 			int contador = 0;
 			for (int j=0; j < listaFactores.size();j++) {
 				valorFactor = listaDistritos.get(i)*listaFactores.get(j);
+				imprimir(""+listaDistritos.get(i));
+				imprimir(""+listaFactores.get(j));
 				
 				switch(contador){
 					case 0:

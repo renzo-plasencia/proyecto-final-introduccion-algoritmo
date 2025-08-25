@@ -165,7 +165,7 @@ public class ConsultarTerreno extends JFrame {
 	 */
 	void cerrar() {
 		int respuesta;
-		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea salir de la consulta de terrenos?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificación?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
 		
 		if (respuesta == 0) {
 			dispose();

@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +47,7 @@ public class ListarTerrenos extends JFrame {
 	 * Create the frame.
 	 */
 	public ListarTerrenos() {
-		setTitle("Lista de Terrenos");
+		setTitle("Consultar Terrenos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 468, 377);
 		contentPane = new JPanel();
@@ -108,8 +107,6 @@ public class ListarTerrenos extends JFrame {
 	void listar() {
 		double valorFactor;
 		limpiar();
-		// Formato decimal
-		DecimalFormat formato = new DecimalFormat("#,###.##");		
 		// Nombre de terrenos
 		String[] terrenos = {Tienda.modelo0,Tienda.modelo1,Tienda.modelo2};
 		List<String> listaTerrenos = Arrays.asList(terrenos);
@@ -123,7 +120,7 @@ public class ListarTerrenos extends JFrame {
 		imprimir("======== Descripción de los terrenos ========");
 		// Imprimir caracteristicas del terreno
 		for (int i=0; i < listaTerrenos.size();i++) {
-			imprimir("Área de Terreno: "+ listaTerrenos.get(i));
+			imprimir("Nombre: "+ listaTerrenos.get(i));
 			imprimir("Alto: "+ listaLargos.get(i));
 			imprimir("Ancho: "+ listaAnchos.get(i));
 			imprimir();
@@ -134,8 +131,7 @@ public class ListarTerrenos extends JFrame {
 		List<Double> listaDistritos = Arrays.asList(distritos);
 		// Factor
 		Double[] factor = {Tienda.calle,Tienda.parque,Tienda.esquina};
-		List<Double> listaFactores = Arrays.asList(factor);
-		
+		List<Double> listaFactores = Arrays.asList(distritos);
 		imprimir("======== Precio de los terrenos por metro cuadrado ========");
 		for (int i=0; i < listaDistritos.size();i++) {
 			int contador = 0;
@@ -144,13 +140,13 @@ public class ListarTerrenos extends JFrame {
 				
 				switch(contador){
 					case 0:
-						imprimir("Distrito" + (i+1) + " en calle: $ " + valorFactor);
+						imprimir("Distrito" + (i+1) + " en calle: S/." + valorFactor);
 						break;
 					case 1:
-						imprimir("Distrito" + (i+1) + " en parque: $ "+ formato.format(valorFactor));
+						imprimir("Distrito" + (i+1) + " en parque: S/."+valorFactor);
 						break;
 					case 2:
-						imprimir("Distrito" + (i+1) + " en esquina: $ "+ formato.format(valorFactor));
+						imprimir("Distrito" + (i+1) + " en esquina: S/."+valorFactor);
 						break;
 				}
 				contador++;

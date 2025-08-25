@@ -99,7 +99,7 @@ public class ModificarPrecioM extends JFrame {
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setColumns(10);
-		txtPrecio.setBounds(113, 105, 216, 20);
+		txtPrecio.setBounds(115, 105, 216, 20);
 		contentPane.add(txtPrecio);
 		
 		JButton btnGuardar = new JButton("Guardar");

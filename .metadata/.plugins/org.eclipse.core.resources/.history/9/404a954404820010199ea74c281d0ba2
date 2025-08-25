@@ -114,7 +114,7 @@ public class VenderTerrenos extends JFrame {
 		btn_vender.setBounds(315, 45, 84, 25);
 		contentPane.add(btn_vender);
 		
-		JLabel lblNewLabel = new JLabel("M\u00F3dulode Venta de Terrenos");
+		JLabel lblNewLabel = new JLabel("Configurar Descuentos");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel.setBounds(20, 9, 309, 22);
 		contentPane.add(lblNewLabel);
@@ -232,11 +232,11 @@ public class VenderTerrenos extends JFrame {
 	    Imprimir("Boleta de Venta");
 	    Imprimir("");
 	    Imprimir("Terreno: "+ modelo);
-	    Imprimir("Precio del Terreno: $ " + formato.format(valorterreno) );
+	    Imprimir("Precio del Terreno: $" + formato.format(valorterreno) );
 	    Imprimir("Factor por Ubicacion: X " + formato.format(factor) );
-	    Imprimir("Importe de Compra: $ " + formato.format(importecompra) );
-	    Imprimir("Importe de Descuento: $ " + formato.format(importedescuento) );
-	    Imprimir("Importe a Pagar: $ " + formato.format(importeboleta) );
+	    Imprimir("Importe de Compra: $" + formato.format(importecompra) );
+	    Imprimir("Importe de Descuento: $" + formato.format(importedescuento) );
+	    Imprimir("Importe a Pagar: $" + formato.format(importeboleta) );
 	    Imprimir("Te llevas de Regalo: "+ obsequio);
 	    
 	    verificarNumeroVentas(importeboleta);    

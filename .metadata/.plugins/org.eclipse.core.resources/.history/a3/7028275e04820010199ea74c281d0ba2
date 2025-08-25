@@ -100,10 +100,8 @@ public class AvanceVentas extends JFrame {
 	}
 	
 	void establecerVentas() {
-		DecimalFormat formato = new DecimalFormat("#,###.##");
-		
-		lblNVentas.setText("Número de Venta Diario: "+formato.format(Tienda.contadorVentas));
-		lblImporteTotalGeneral.setText("Importe Total General Acumulado: $ "+formato.format(Tienda.ventasAcumuladas));
-		lblPorcentajeDeCuota.setText("Porcentaje de Cuota Diaria: "+formato.format((Tienda.ventasAcumuladas/Tienda.cuotaDiaria*100)) + " %");
+		lblNVentas.setText("Número de Venta Diario: "+Tienda.contadorVentas);
+		lblImporteTotalGeneral.setText("Importe Total General Acumulado: $ "+Tienda.ventasAcumuladas);
+		lblPorcentajeDeCuota.setText("Porcentaje de Cuota Diaria: "+(Tienda.ventasAcumuladas/Tienda.cuotaDiaria*100) + " %");
 	}
 }

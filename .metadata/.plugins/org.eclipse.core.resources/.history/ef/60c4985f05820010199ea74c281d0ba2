@@ -114,7 +114,7 @@ public class VenderTerrenos extends JFrame {
 		btn_vender.setBounds(315, 45, 84, 25);
 		contentPane.add(btn_vender);
 		
-		JLabel lblNewLabel = new JLabel("M\u00F3dulode Venta de Terrenos");
+		JLabel lblNewLabel = new JLabel("Configurar Descuentos");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel.setBounds(20, 9, 309, 22);
 		contentPane.add(lblNewLabel);

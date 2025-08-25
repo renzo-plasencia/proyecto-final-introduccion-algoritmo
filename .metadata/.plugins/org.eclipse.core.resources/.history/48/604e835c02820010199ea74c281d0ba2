@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -120,7 +119,7 @@ public class ConsultarTerreno extends JFrame {
 		lblDistrito.setBounds(20, 101, 89, 22);
 		contentPane.add(lblDistrito);
 		
-		JLabel lblPrecio = new JLabel("Precio ($)");
+		JLabel lblPrecio = new JLabel("Precio");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPrecio.setBounds(20, 289, 89, 22);
 		contentPane.add(lblPrecio);
@@ -165,7 +164,7 @@ public class ConsultarTerreno extends JFrame {
 	 */
 	void cerrar() {
 		int respuesta;
-		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea salir de la consulta de terrenos?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificación?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
 		
 		if (respuesta == 0) {
 			dispose();
@@ -233,12 +232,10 @@ public class ConsultarTerreno extends JFrame {
 				break;
 		}
 		
-		DecimalFormat formato = new DecimalFormat("#,###.##");
-		
 		txtAncho.setText(String.valueOf(ancho));
 		txtLargo.setText(String.valueOf(largo));
 		precioFinal = calcularPrecio(precioM2,factor,ancho,largo);
-		txtPrecio.setText(formato.format(precioFinal));		
+		txtPrecio.setText(String.valueOf(precioFinal));		
 	}
 	
 	double calcularPrecio(double precioM2,double factor,double ancho, double largo) {
