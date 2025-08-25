@@ -1,0 +1,96 @@
+package proyecto_inmuebles;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+
+public class AvanceVentas extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AvanceVentas frame = new AvanceVentas();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AvanceVentas() {
+		setTitle("Avance de Ventas");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 420, 272);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Avance de Ventas");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(34, 27, 309, 22);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnCancelar = new JButton("Aceptar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrar();
+			}
+		});
+		btnCancelar.setBounds(301, 194, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JLabel lblNVentas = new JLabel("N\u00FAmero de Venta Diario: 0");
+		lblNVentas.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNVentas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNVentas.setBounds(33, 72, 309, 22);
+		contentPane.add(lblNVentas);
+		
+		JLabel lblImporteTotalGeneral = new JLabel("Importe Total General Acumulado: S/. 0");
+		lblImporteTotalGeneral.setHorizontalAlignment(SwingConstants.LEFT);
+		lblImporteTotalGeneral.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblImporteTotalGeneral.setBounds(34, 114, 309, 22);
+		contentPane.add(lblImporteTotalGeneral);
+		
+		JLabel lblPorcentajeDeCuota = new JLabel("Porcentaje de Cuota Diaria: 0%");
+		lblPorcentajeDeCuota.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPorcentajeDeCuota.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPorcentajeDeCuota.setBounds(34, 161, 309, 22);
+		contentPane.add(lblPorcentajeDeCuota);
+
+	}
+	
+	
+	/*
+	 * MÉTODOS 
+	 */
+	void cerrar() {
+		dispose();
+	}
+}

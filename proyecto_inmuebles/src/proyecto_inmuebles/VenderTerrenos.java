@@ -198,8 +198,8 @@ public class VenderTerrenos extends JFrame {
 				descuento =  Tienda.descuentoDistrito1;
 				break;
 			case 2:
-				precio = Tienda.distrito1;
-				descuento =  Tienda.descuentoDistrito1;
+				precio = Tienda.distrito2;
+				descuento =  Tienda.descuentoDistrito2;
 				break;
 			default:
 				precio = 0.0;
@@ -238,16 +238,18 @@ public class VenderTerrenos extends JFrame {
 	    Imprimir("Importe a Pagar: $" + importeboleta);
 	    Imprimir("Te llevas de Regalo: "+ obsequio);
 	    
-	    verificarNumeroVentas();    
+	    verificarNumeroVentas(importeboleta);    
 	}
 	
-	void verificarNumeroVentas() {
+	void verificarNumeroVentas(double importeboleta) {
+		// Aumentar el contador de ventas
+		Tienda.contadorVentas++;
+		//Sumar las ventas
+		Tienda.ventasAcumuladas += importeboleta;
 		
-		if(Tienda.contadorVentas >= 4) {
-			Tienda.contadorVentas = 0;
-
-		} else {
-			Tienda.contadorVentas++;			
+		if(Tienda.contadorVentas % 5==0) {
+			AvanceVentas d = new AvanceVentas();
+			d.setVisible(true);		
 		}		
 	}
 

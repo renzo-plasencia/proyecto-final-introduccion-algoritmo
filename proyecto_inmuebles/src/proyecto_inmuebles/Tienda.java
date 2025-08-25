@@ -59,6 +59,8 @@ public class Tienda extends JFrame {
 	
 	// Número de ventas
 	public static int contadorVentas = 0;
+	public static double ventasAcumuladas = 0;
+	public static double cuotaDiaria = 500000;
 
 	/**
 	 * Launch the application.
