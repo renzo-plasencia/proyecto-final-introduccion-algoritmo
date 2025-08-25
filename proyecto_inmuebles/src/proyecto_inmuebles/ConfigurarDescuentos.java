@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -20,12 +21,9 @@ import javax.swing.DefaultComboBoxModel;
 public class ConfigurarDescuentos extends JFrame {
 
 	private JPanel contentPane;
-	private JComboBox cboArea;
-	private JComboBox cboDistrito;
-	private JComboBox cboUbicacion;
-	private JTextField txtAncho;
-	private JTextField txtLargo;
-	private JTextField txtPrecio;
+	private JTextField txtDistrito1;
+	private JTextField txtDistrito2;
+	private JTextField txtDistrito3;
 
 	/**
 	 * Launch the application.
@@ -47,19 +45,49 @@ public class ConfigurarDescuentos extends JFrame {
 	 * Create the frame.
 	 */
 	public ConfigurarDescuentos() {
-		setTitle("Consultar Terrenos");
+		setTitle("Configurar Descuentos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 468, 377);
+		setBounds(100, 100, 468, 225);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Consulta de Terrenos");
+		JLabel lblNewLabel = new JLabel("Configurar Descuentos");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel.setBounds(10, 11, 309, 22);
 		contentPane.add(lblNewLabel);
 		
+		JLabel lblDistrito1 = new JLabel("Distrito 1");
+		lblDistrito1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDistrito1.setBounds(18, 55, 89, 22);
+		contentPane.add(lblDistrito1);
+		
+		txtDistrito1 = new JTextField();
+		txtDistrito1.setColumns(10);
+		txtDistrito1.setBounds(98, 56, 191, 20);
+		contentPane.add(txtDistrito1);
+		
+		
+		txtDistrito2 = new JTextField();
+		txtDistrito2.setColumns(10);
+		txtDistrito2.setBounds(98, 98, 191, 20);
+		contentPane.add(txtDistrito2);
+		
+		txtDistrito3 = new JTextField();
+		txtDistrito3.setColumns(10);
+		txtDistrito3.setBounds(98, 143, 191, 20);
+		contentPane.add(txtDistrito3);
+		
+		JLabel lblDistrito2 = new JLabel("Distrito 2");
+		lblDistrito2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDistrito2.setBounds(18, 97, 89, 22);
+		contentPane.add(lblDistrito2);
+		
+		JLabel lblDistrito3 = new JLabel("Distrito 3");
+		lblDistrito3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDistrito3.setBounds(18, 142, 89, 22);
+		contentPane.add(lblDistrito3);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -67,95 +95,55 @@ public class ConfigurarDescuentos extends JFrame {
 				cerrar();
 			}
 		});
-		btnCancelar.setBounds(352, 47, 89, 23);
+		btnCancelar.setBounds(352, 81, 89, 23);
 		contentPane.add(btnCancelar);
 		
-		JLabel lblArea = new JLabel("\u00C1rea");
-		lblArea.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblArea.setBounds(20, 54, 89, 22);
-		contentPane.add(lblArea);
+		JLabel lblDistrito1_1 = new JLabel("%");
+		lblDistrito1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDistrito1_1.setBounds(295, 55, 24, 22);
+		contentPane.add(lblDistrito1_1);
 		
-		JLabel lblAncho = new JLabel("Ancho");
-		lblAncho.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAncho.setBounds(20, 195, 89, 22);
-		contentPane.add(lblAncho);
+		JLabel lblDistrito1_1_1 = new JLabel("%");
+		lblDistrito1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDistrito1_1_1.setBounds(295, 96, 24, 22);
+		contentPane.add(lblDistrito1_1_1);
 		
-		txtAncho = new JTextField();
-		txtAncho.setEditable(false);
-		txtAncho.setColumns(10);
-		txtAncho.setBounds(100, 201, 216, 20);
-		contentPane.add(txtAncho);
+		JLabel lblDistrito1_1_1_1 = new JLabel("%");
+		lblDistrito1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDistrito1_1_1_1.setBounds(295, 141, 24, 22);
+		contentPane.add(lblDistrito1_1_1_1);
 		
-		
-		txtLargo = new JTextField();
-		txtLargo.setEditable(false);
-		txtLargo.setColumns(10);
-		txtLargo.setBounds(100, 248, 216, 20);
-		contentPane.add(txtLargo);
-		
-		txtPrecio = new JTextField();
-		txtPrecio.setEditable(false);
-		txtPrecio.setColumns(10);
-		txtPrecio.setBounds(100, 295, 216, 20);
-		contentPane.add(txtPrecio);
-		
-		cboArea = new JComboBox();
-		cboArea.setModel(new DefaultComboBoxModel(new String[] {Tienda.modelo0, Tienda.modelo1, Tienda.modelo2}));
-		cboArea.setBounds(100, 51, 218, 23);
-		contentPane.add(cboArea);
-		
-		JLabel lblLargo = new JLabel("Largo");
-		lblLargo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblLargo.setBounds(20, 242, 89, 22);
-		contentPane.add(lblLargo);
-		
-		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n");
-		lblUbicacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblUbicacion.setBounds(20, 148, 89, 22);
-		contentPane.add(lblUbicacion);
-		
-		JLabel lblDistrito = new JLabel("Distrito");
-		lblDistrito.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDistrito.setBounds(20, 101, 89, 22);
-		contentPane.add(lblDistrito);
-		
-		JLabel lblPrecio = new JLabel("Precio");
-		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPrecio.setBounds(20, 289, 89, 22);
-		contentPane.add(lblPrecio);
-		
-		cboDistrito = new JComboBox();
-		
-		cboDistrito.setModel(new DefaultComboBoxModel(new String[] {"Distrito 1","Distrito 2","Distrito 3"}));
-		cboDistrito.setSelectedIndex(0);
-		cboDistrito.setBounds(100, 101, 218, 23);
-		contentPane.add(cboDistrito);
-		
-		cboUbicacion = new JComboBox();
-		cboUbicacion.setModel(new DefaultComboBoxModel(new String[] {"Calle","Parque","Esquina"}));
-		cboUbicacion.setSelectedIndex(0);
-		cboUbicacion.setBounds(100, 151, 218, 23);
-		contentPane.add(cboUbicacion);
-		
-		cboArea.addActionListener(new ActionListener() {
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setCampos();
+				int respuesta;
+				
+				respuesta = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos modificados?", "Guardar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+				
+				if (respuesta == 0) {
+				
+				// Declarar variables
+				double distritoValor1,distritoValor2,distritoValor3;
+				
+				// Obtener datos
+				distritoValor1 = Double.parseDouble(txtDistrito1.getText());
+				distritoValor2 = Double.parseDouble(txtDistrito2.getText());
+				distritoValor3 = Double.parseDouble(txtDistrito3.getText());
+				
+				// Convertir datos
+				Tienda.descuentoDistrito0 = distritoValor1/100;
+				Tienda.descuentoDistrito1 = distritoValor2/100;
+				Tienda.descuentoDistrito2 = distritoValor3/100;
+				
+				dispose();
+				}
+				
 			}
 		});
-		cboDistrito.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setCampos();
-			}
-		});
-		cboUbicacion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setCampos();
-			}
-		});
-			
-		cboArea.setSelectedIndex(0);
-		cboDistrito.setSelectedIndex(0);
-		cboUbicacion.setSelectedIndex(0);
+		btnGuardar.setBounds(352, 47, 89, 23);
+		contentPane.add(btnGuardar);
+		
+		rellenarDescuentos();
 	}
 	
 	
@@ -171,74 +159,17 @@ public class ConfigurarDescuentos extends JFrame {
 		}
 	}
 	
-	void setCampos() {
-		// Declarar variables
-		double precioFinal,factor,precioM2;
-		double largo,ancho;
-		int area;
-		int Idistrito,IFactor;
-		
-		// Obtener datos
-		Idistrito = cboDistrito.getSelectedIndex();
-		IFactor = cboUbicacion.getSelectedIndex();
-		area = cboArea.getSelectedIndex();
-		
-		switch(area) {
-			case 0:
-				largo = Tienda.largo0;
-				ancho = Tienda.ancho0;
-				break;
-			case 1:
-				largo = Tienda.largo1;
-				ancho = Tienda.ancho1;
-				break;
-			case 2:
-				largo = Tienda.largo2;
-				ancho = Tienda.ancho2;
-				break;
-			default:
-				largo = 0;
-				ancho = 0;
-				break;
-		}	
-		
-		switch(Idistrito) {
-			case 0:
-				precioM2 = Tienda.distrito0;
-				break;
-			case 1:
-				precioM2 = Tienda.distrito1;
-				break;
-			case 2:
-				precioM2 = Tienda.distrito2;
-				break;
-			default:
-				precioM2 = 0;
-				break;
-		}
-		
-		switch(IFactor) {
-			case 0:
-				factor = Tienda.calle;
-				break;
-			case 1:
-				factor = Tienda.parque;
-				break;
-			case 2:
-				factor = Tienda.esquina;
-				break;
-			default:
-				factor = 0;
-				break;
-		}
-		
-		txtAncho.setText(String.valueOf(ancho));
-		txtLargo.setText(String.valueOf(largo));
-		precioFinal = calcularPrecio(precioM2,factor,ancho,largo);
-		txtPrecio.setText(String.valueOf(precioFinal));		
-	}
+	
 	
 	double calcularPrecio(double precioM2,double factor,double ancho, double largo) {
 		return ((ancho*largo)*precioM2)*factor;
+	}
+	
+	void rellenarDescuentos() {
+		DecimalFormat formato = new DecimalFormat("#,###.##");
+		
+		txtDistrito1.setText(String.valueOf(formato.format(Tienda.descuentoDistrito0*100)));
+		txtDistrito2.setText(String.valueOf(formato.format(Tienda.descuentoDistrito1*100)));
+		txtDistrito3.setText(String.valueOf(formato.format(Tienda.descuentoDistrito2*100)));
 	}
 }

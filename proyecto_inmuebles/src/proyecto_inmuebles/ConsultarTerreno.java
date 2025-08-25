@@ -61,7 +61,7 @@ public class ConsultarTerreno extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton("Cerrar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cerrar();

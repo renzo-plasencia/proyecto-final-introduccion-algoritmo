@@ -1,0 +1,159 @@
+package proyecto_inmuebles;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+public class ConfigurarObsequios extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtDistrito1;
+	private JTextField txtDistrito2;
+	private JTextField txtDistrito3;
+	private JLabel lblTerreno1;
+	private JLabel lblTerreno2;
+	private JLabel lblTerreno3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ConfigurarObsequios frame = new ConfigurarObsequios();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ConfigurarObsequios() {
+		setTitle("Configurar Obsequios");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 615, 225);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Configurar Obsequios");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(10, 11, 309, 22);
+		contentPane.add(lblNewLabel);
+		
+		lblTerreno1 = new JLabel("Terreno de");
+		lblTerreno1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblTerreno1.setBounds(18, 55, 173, 22);
+		contentPane.add(lblTerreno1);
+		
+		txtDistrito1 = new JTextField();
+		txtDistrito1.setColumns(10);
+		txtDistrito1.setBounds(197, 56, 191, 20);
+		contentPane.add(txtDistrito1);
+		
+		
+		txtDistrito2 = new JTextField();
+		txtDistrito2.setColumns(10);
+		txtDistrito2.setBounds(197, 98, 191, 20);
+		contentPane.add(txtDistrito2);
+		
+		txtDistrito3 = new JTextField();
+		txtDistrito3.setColumns(10);
+		txtDistrito3.setBounds(197, 143, 191, 20);
+		contentPane.add(txtDistrito3);
+		
+		lblTerreno2 = new JLabel("Terreno de");
+		lblTerreno2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblTerreno2.setBounds(18, 97, 89, 22);
+		contentPane.add(lblTerreno2);
+		
+		lblTerreno3 = new JLabel("Terreno de");
+		lblTerreno3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblTerreno3.setBounds(18, 142, 89, 22);
+		contentPane.add(lblTerreno3);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrar();
+			}
+		});
+		btnCancelar.setBounds(502, 65, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int respuesta;
+				
+				respuesta = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos modificados?", "Guardar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+				
+				if (respuesta == 0) {
+				
+				// Declarar variables
+				double distritoValor1,distritoValor2,distritoValor3;
+				
+				// Obtener datos
+				distritoValor1 = Double.parseDouble(txtDistrito1.getText());
+				distritoValor2 = Double.parseDouble(txtDistrito2.getText());
+				distritoValor3 = Double.parseDouble(txtDistrito3.getText());
+				
+				// Convertir datos
+				Tienda.descuentoDistrito0 = distritoValor1/100;
+				Tienda.descuentoDistrito1 = distritoValor2/100;
+				Tienda.descuentoDistrito2 = distritoValor3/100;
+				
+				dispose();
+				}
+				
+			}
+		});
+		btnGuardar.setBounds(502, 31, 89, 23);
+		contentPane.add(btnGuardar);
+		
+		rellenarObsequios();
+	}
+	
+	
+	/*
+	 * MÉTODOS 
+	 */
+	void cerrar() {
+		int respuesta;
+		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificación?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+		
+		if (respuesta == 0) {
+			dispose();
+		}
+	}
+	
+	void rellenarObsequios() {
+		DecimalFormat formato = new DecimalFormat("#,###.##");
+		
+		txtDistrito1.setText(Tienda.obsequio1);
+		txtDistrito2.setText(Tienda.obsequio2);
+		txtDistrito3.setText(Tienda.obsequio3);
+		
+		lblTerreno1.setText("Terreno de "+Tienda.modelo0);
+	}
+}

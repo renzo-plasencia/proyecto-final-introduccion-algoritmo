@@ -144,9 +144,21 @@ public class Tienda extends JFrame {
 		menuBar.add(mnConfiguracin);
 		
 		JMenuItem miConfigurarDescuentos = new JMenuItem("Configurar descuentos");
+		miConfigurarDescuentos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConfigurarDescuentos d = new ConfigurarDescuentos();
+				d.setVisible(true);
+			}
+		});
 		mnConfiguracin.add(miConfigurarDescuentos);
 		
 		JMenuItem miConfigurarObsequios = new JMenuItem("Configurar obsequios");
+		miConfigurarObsequios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConfigurarObsequios d = new ConfigurarObsequios();
+				d.setVisible(true);
+			}
+		});
 		mnConfiguracin.add(miConfigurarObsequios);
 		
 		JMenuItem miConfigurarFactores = new JMenuItem("Configurar factores");
