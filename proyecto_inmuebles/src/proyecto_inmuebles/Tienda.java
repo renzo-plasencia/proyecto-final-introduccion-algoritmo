@@ -55,7 +55,10 @@ public class Tienda extends JFrame {
 	// Obsequios
 	public static String obsequio1 = "Tostadora"; //72m2
 	public static String obsequio2 = "Licuadora"; //90m2
-	public static String obsequio3 = "Microondas"; //m2
+	public static String obsequio3 = "Microondas"; //120m2
+	
+	// Número de ventas
+	public static int contadorVentas = 0;
 
 	/**
 	 * Launch the application.
@@ -138,6 +141,12 @@ public class Tienda extends JFrame {
 		menuBar.add(mnVentas);
 		
 		JMenuItem miVender = new JMenuItem("Vender");
+		miVender.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VenderTerrenos d = new VenderTerrenos();
+				d.setVisible(true);
+			}
+		});
 		mnVentas.add(miVender);
 		
 		JMenu mnConfiguracin = new JMenu("Configuraci\u00F3n");
@@ -162,12 +171,24 @@ public class Tienda extends JFrame {
 		mnConfiguracin.add(miConfigurarObsequios);
 		
 		JMenuItem miConfigurarFactores = new JMenuItem("Configurar factores");
+		miConfigurarFactores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConfigurarFactores d = new ConfigurarFactores();
+				d.setVisible(true);
+			}
+		});
 		mnConfiguracin.add(miConfigurarFactores);
 		
 		JMenu mnAyuda = new JMenu("Ayuda");
 		menuBar.add(mnAyuda);
 		
 		JMenuItem miAcerca = new JMenuItem("Acerca de Tienda");
+		miAcerca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Acerca d = new Acerca();
+				d.setVisible(true);
+			}
+		});
 		mnAyuda.add(miAcerca);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);

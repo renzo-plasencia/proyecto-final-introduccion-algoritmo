@@ -1,0 +1,103 @@
+package proyecto_inmuebles;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+
+public class Acerca extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Acerca frame = new Acerca();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Acerca() {
+		setTitle("Acerca de");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 391, 319);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Tienda de Terrenos");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(34, 27, 309, 22);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrar();
+			}
+		});
+		btnCancelar.setBounds(143, 246, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JLabel lblAutores = new JLabel("Autores");
+		lblAutores.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAutores.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblAutores.setBounds(34, 73, 309, 22);
+		contentPane.add(lblAutores);
+		
+		JLabel lblRenzoPlasencia = new JLabel("Renzo Plasencia");
+		lblRenzoPlasencia.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRenzoPlasencia.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblRenzoPlasencia.setBounds(34, 114, 309, 22);
+		contentPane.add(lblRenzoPlasencia);
+		
+		JLabel lblGianmarcoMendoza = new JLabel("Gianmarco Mendoza");
+		lblGianmarcoMendoza.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGianmarcoMendoza.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblGianmarcoMendoza.setBounds(34, 144, 309, 22);
+		contentPane.add(lblGianmarcoMendoza);
+		
+		JLabel lblVictorPacora = new JLabel("Victor Pacora");
+		lblVictorPacora.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVictorPacora.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblVictorPacora.setBounds(34, 181, 309, 22);
+		contentPane.add(lblVictorPacora);
+
+	}
+	
+	
+	/*
+	 * MÉTODOS 
+	 */
+	void cerrar() {
+		dispose();
+	}
+	
+}

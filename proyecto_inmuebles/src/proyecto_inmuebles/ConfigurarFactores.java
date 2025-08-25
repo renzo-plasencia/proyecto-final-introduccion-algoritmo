@@ -17,13 +17,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 public class ConfigurarFactores extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtDistrito1;
-	private JTextField txtDistrito2;
-	private JTextField txtDistrito3;
+	private JTextField txtFactor1;
+	private JTextField txtFactor2;
+	private JTextField txtFactor3;
 
 	/**
 	 * Launch the application.
@@ -47,7 +48,7 @@ public class ConfigurarFactores extends JFrame {
 	public ConfigurarFactores() {
 		setTitle("Configurar Factores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 468, 225);
+		setBounds(100, 100, 434, 221);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,36 +59,36 @@ public class ConfigurarFactores extends JFrame {
 		lblNewLabel.setBounds(10, 11, 309, 22);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblDistrito1 = new JLabel("Calle");
-		lblDistrito1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDistrito1.setBounds(18, 55, 89, 22);
-		contentPane.add(lblDistrito1);
+		JLabel lblFactor1 = new JLabel("Calle");
+		lblFactor1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFactor1.setBounds(20, 55, 89, 22);
+		contentPane.add(lblFactor1);
 		
-		txtDistrito1 = new JTextField();
-		txtDistrito1.setColumns(10);
-		txtDistrito1.setBounds(98, 56, 191, 20);
-		contentPane.add(txtDistrito1);
+		txtFactor1 = new JTextField();
+		txtFactor1.setColumns(10);
+		txtFactor1.setBounds(98, 56, 169, 20);
+		contentPane.add(txtFactor1);
 		
 		
-		txtDistrito2 = new JTextField();
-		txtDistrito2.setColumns(10);
-		txtDistrito2.setBounds(98, 98, 191, 20);
-		contentPane.add(txtDistrito2);
+		txtFactor2 = new JTextField();
+		txtFactor2.setColumns(10);
+		txtFactor2.setBounds(98, 98, 169, 20);
+		contentPane.add(txtFactor2);
 		
-		txtDistrito3 = new JTextField();
-		txtDistrito3.setColumns(10);
-		txtDistrito3.setBounds(98, 143, 191, 20);
-		contentPane.add(txtDistrito3);
+		txtFactor3 = new JTextField();
+		txtFactor3.setColumns(10);
+		txtFactor3.setBounds(98, 143, 169, 20);
+		contentPane.add(txtFactor3);
 		
-		JLabel lblDistrito2 = new JLabel("Parque");
-		lblDistrito2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDistrito2.setBounds(18, 97, 89, 22);
-		contentPane.add(lblDistrito2);
+		JLabel lblFactor2 = new JLabel("Parque");
+		lblFactor2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFactor2.setBounds(20, 96, 89, 22);
+		contentPane.add(lblFactor2);
 		
-		JLabel lblDistrito3 = new JLabel("Esquina");
-		lblDistrito3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDistrito3.setBounds(18, 142, 89, 22);
-		contentPane.add(lblDistrito3);
+		JLabel lblFactor3 = new JLabel("Esquina");
+		lblFactor3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFactor3.setBounds(20, 142, 89, 22);
+		contentPane.add(lblFactor3);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -95,23 +96,8 @@ public class ConfigurarFactores extends JFrame {
 				cerrar();
 			}
 		});
-		btnCancelar.setBounds(352, 81, 89, 23);
+		btnCancelar.setBounds(301, 82, 89, 23);
 		contentPane.add(btnCancelar);
-		
-		JLabel lblDistrito1_1 = new JLabel("%");
-		lblDistrito1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDistrito1_1.setBounds(295, 55, 24, 22);
-		contentPane.add(lblDistrito1_1);
-		
-		JLabel lblDistrito1_1_1 = new JLabel("%");
-		lblDistrito1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDistrito1_1_1.setBounds(295, 96, 24, 22);
-		contentPane.add(lblDistrito1_1_1);
-		
-		JLabel lblDistrito1_1_1_1 = new JLabel("%");
-		lblDistrito1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDistrito1_1_1_1.setBounds(295, 141, 24, 22);
-		contentPane.add(lblDistrito1_1_1_1);
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
@@ -123,27 +109,43 @@ public class ConfigurarFactores extends JFrame {
 				if (respuesta == 0) {
 				
 				// Declarar variables
-				double distritoValor1,distritoValor2,distritoValor3;
+				double calle,parque,esquina;
 				
 				// Obtener datos
-				distritoValor1 = Double.parseDouble(txtDistrito1.getText());
-				distritoValor2 = Double.parseDouble(txtDistrito2.getText());
-				distritoValor3 = Double.parseDouble(txtDistrito3.getText());
+				calle = Double.parseDouble(txtFactor1.getText());
+				parque = Double.parseDouble(txtFactor2.getText());
+				esquina = Double.parseDouble(txtFactor3.getText());
 				
 				// Convertir datos
-				Tienda.descuentoDistrito0 = distritoValor1/100;
-				Tienda.descuentoDistrito1 = distritoValor2/100;
-				Tienda.descuentoDistrito2 = distritoValor3/100;
+				Tienda.calle = calle;
+				Tienda.parque = parque;
+				Tienda.esquina = esquina;
 				
 				dispose();
 				}
 				
 			}
 		});
-		btnGuardar.setBounds(352, 47, 89, 23);
+		btnGuardar.setBounds(301, 48, 89, 23);
 		contentPane.add(btnGuardar);
 		
-		rellenarDescuentos();
+		JLabel lblMultiplicaElPrecio_1 = new JLabel("X");
+		lblMultiplicaElPrecio_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMultiplicaElPrecio_1.setBounds(83, 99, 16, 22);
+		contentPane.add(lblMultiplicaElPrecio_1);
+		
+		JLabel lblMultiplicaElPrecio_1_1 = new JLabel("X");
+		lblMultiplicaElPrecio_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMultiplicaElPrecio_1_1.setBounds(83, 54, 16, 22);
+		contentPane.add(lblMultiplicaElPrecio_1_1);
+		
+		JLabel lblMultiplicaElPrecio_1_1_1 = new JLabel("X");
+		lblMultiplicaElPrecio_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMultiplicaElPrecio_1_1_1.setBounds(83, 142, 16, 22);
+		contentPane.add(lblMultiplicaElPrecio_1_1_1);
+		
+		rellenarFactores();
+		
 	}
 	
 	
@@ -165,11 +167,11 @@ public class ConfigurarFactores extends JFrame {
 		return ((ancho*largo)*precioM2)*factor;
 	}
 	
-	void rellenarDescuentos() {
+	void rellenarFactores() {
 		DecimalFormat formato = new DecimalFormat("#,###.##");
 		
-		txtDistrito1.setText(String.valueOf(formato.format(Tienda.descuentoDistrito0*100)));
-		txtDistrito2.setText(String.valueOf(formato.format(Tienda.descuentoDistrito1*100)));
-		txtDistrito3.setText(String.valueOf(formato.format(Tienda.descuentoDistrito2*100)));
+		txtFactor1.setText(String.valueOf(formato.format(Tienda.calle)));
+		txtFactor2.setText(String.valueOf(formato.format(Tienda.parque)));
+		txtFactor3.setText(String.valueOf(formato.format(Tienda.esquina)));
 	}
 }

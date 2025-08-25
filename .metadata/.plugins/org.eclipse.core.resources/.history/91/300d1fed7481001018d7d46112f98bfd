@@ -1,0 +1,14 @@
+package proyecto_inmuebles;
+
+import javax.swing.JPanel;
+
+public class AvanceVentas extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public AvanceVentas() {
+		setLayout(null);
+
+	}
+}
