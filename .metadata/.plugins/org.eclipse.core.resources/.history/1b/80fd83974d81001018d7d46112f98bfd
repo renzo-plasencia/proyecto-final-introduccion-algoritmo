@@ -1,0 +1,197 @@
+package proyecto_inmuebles;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+public class ConsultarTerreno extends JFrame {
+
+	private JPanel contentPane;
+	private JComboBox cboArea;
+	private JComboBox cboDistrito;
+	private JComboBox cboUbicacion;
+	private JTextField txtAncho;
+	private JTextField txtLargo;
+	private JTextField txtPrecio;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ConsultarTerreno frame = new ConsultarTerreno();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ConsultarTerreno() {
+		setTitle("Consultar Terrenos");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 468, 377);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Consulta de Terrenos");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(10, 11, 309, 22);
+		contentPane.add(lblNewLabel);
+		
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrar();
+			}
+		});
+		btnCancelar.setBounds(352, 47, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JLabel lblArea = new JLabel("\u00C1rea");
+		lblArea.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblArea.setBounds(20, 54, 89, 22);
+		contentPane.add(lblArea);
+		
+		JLabel lblAncho = new JLabel("Ancho");
+		lblAncho.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAncho.setBounds(20, 195, 89, 22);
+		contentPane.add(lblAncho);
+		
+		txtAncho = new JTextField();
+		txtAncho.setEditable(false);
+		txtAncho.setColumns(10);
+		txtAncho.setBounds(100, 201, 216, 20);
+		contentPane.add(txtAncho);
+		
+		
+		txtLargo = new JTextField();
+		txtLargo.setEditable(false);
+		txtLargo.setColumns(10);
+		txtLargo.setBounds(100, 248, 216, 20);
+		contentPane.add(txtLargo);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setEditable(false);
+		txtPrecio.setColumns(10);
+		txtPrecio.setBounds(100, 295, 216, 20);
+		contentPane.add(txtPrecio);
+		
+		cboArea = new JComboBox();
+		cboArea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double largo,ancho;
+				int area;
+				area = cboArea.getSelectedIndex();
+				
+				switch(area) {
+					case 0:
+						largo = Tienda.largo0;
+						ancho = Tienda.ancho0;
+						break;
+					case 1:
+						largo = Tienda.largo1;
+						ancho = Tienda.ancho1;
+						break;
+					case 2:
+						largo = Tienda.largo2;
+						ancho = Tienda.ancho2;
+						break;
+					default:
+						largo = 0;
+						ancho = 0;
+						break;
+				}		
+			}
+		});
+		cboArea.setModel(new DefaultComboBoxModel(new String[] {Tienda.modelo0, Tienda.modelo1, Tienda.modelo2}));
+		cboArea.setBounds(100, 51, 218, 23);
+		contentPane.add(cboArea);
+		
+		JLabel lblLargo = new JLabel("Largo");
+		lblLargo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblLargo.setBounds(20, 242, 89, 22);
+		contentPane.add(lblLargo);
+		
+		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n");
+		lblUbicacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUbicacion.setBounds(20, 148, 89, 22);
+		contentPane.add(lblUbicacion);
+		
+		JLabel lblDistrito = new JLabel("Distrito");
+		lblDistrito.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDistrito.setBounds(20, 101, 89, 22);
+		contentPane.add(lblDistrito);
+		
+		JLabel lblPrecio = new JLabel("Precio");
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPrecio.setBounds(20, 289, 89, 22);
+		contentPane.add(lblPrecio);
+		
+		cboDistrito = new JComboBox();
+		cboDistrito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setCampos();
+			}
+		});
+		cboDistrito.setModel(new DefaultComboBoxModel(new String[] {"Distrito 1","Distrito 2","Distrito 3"}));
+		cboDistrito.setSelectedIndex(0);
+		cboDistrito.setBounds(100, 101, 218, 23);
+		contentPane.add(cboDistrito);
+		
+		cboUbicacion = new JComboBox();
+		cboUbicacion.setModel(new DefaultComboBoxModel(new String[] {"Calle","Parque","Esquina"}));
+		cboUbicacion.setSelectedIndex(0);
+		cboUbicacion.setBounds(100, 151, 218, 23);
+		contentPane.add(cboUbicacion);
+				
+		
+			
+		cboArea.setSelectedIndex(0);
+		cboDistrito.setSelectedIndex(0);
+		cboUbicacion.setSelectedIndex(0);
+	}
+	
+	
+	/*
+	 * MÉTODOS 
+	 */
+	void cerrar() {
+		int respuesta;
+		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificación?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+		
+		if (respuesta == 0) {
+			dispose();
+		}
+	}
+	
+	void setCampos() {
+		txtPrecio.setText("2");
+	}
+	
+	double calcularPrecio() {
+		return 0.0;
+	}
+}

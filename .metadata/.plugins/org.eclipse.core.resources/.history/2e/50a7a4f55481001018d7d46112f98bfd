@@ -1,0 +1,124 @@
+package proyecto_inmuebles;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+
+public class ListarTerrenos extends JFrame {
+
+	private JPanel contentPane;
+	private JTextArea txtS;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ListarTerrenos frame = new ListarTerrenos();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ListarTerrenos() {
+		setTitle("Consultar Terrenos");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 468, 377);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Lista de Terrenos");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(10, 11, 309, 22);
+		contentPane.add(lblNewLabel);
+		
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrar();
+			}
+		});
+		btnCancelar.setBounds(130, 304, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 44, 432, 249);
+		contentPane.add(scrollPane);
+		
+		txtS = new JTextArea();
+		scrollPane.setViewportView(txtS);
+		
+		JButton btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listar();
+			}
+		});
+		btnListar.setBounds(229, 304, 89, 23);
+		contentPane.add(btnListar);
+	}
+	
+	
+	/*
+	 * MÉTODOS 
+	 */
+	void cerrar() {
+		int respuesta;
+		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificación?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+		
+		if (respuesta == 0) {
+			dispose();
+		}
+	}
+	
+	double calcularPrecio(double precioM2,double factor,double ancho, double largo) {
+		return ((ancho*largo)*precioM2)*factor;
+	}
+	
+	void listar() {
+		
+		String[] terrenos = {Tienda.modelo0,Tienda.modelo1,Tienda.modelo2};
+		List<String> listaTerrenos = Arrays.asList(terrenos);
+		
+		for (int i=0; i < listaTerrenos.size();i++) {
+			txtS.append("Nombre: "+ listaTerrenos.get(i));;
+		}
+		
+		// Nombre Terreno
+		// Ancho, largo y M2
+		
+		// Distrito con cada factor + precio m2
+		
+		//
+		
+	}
+}

@@ -99,6 +99,12 @@ public class Tienda extends JFrame {
 		menuBar.add(mnMantenimiento);
 		
 		JMenuItem miConsultarTerrenos = new JMenuItem("Consultar terrenos");
+		miConsultarTerrenos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsultarTerreno d = new ConsultarTerreno();
+				d.setVisible(true);
+			}
+		});
 		mnMantenimiento.add(miConsultarTerrenos);
 		
 		JMenuItem miModificarTerrenos = new JMenuItem("Modificar Terrenos");
@@ -120,6 +126,12 @@ public class Tienda extends JFrame {
 		mnMantenimiento.add(miModificarPrecioM);
 		
 		JMenuItem miListarTerrenos = new JMenuItem("Listar Terrenos");
+		miListarTerrenos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarTerrenos d = new ListarTerrenos();
+				d.setVisible(true);
+			}
+		});
 		mnMantenimiento.add(miListarTerrenos);
 		
 		JMenu mnVentas = new JMenu("Ventas");
