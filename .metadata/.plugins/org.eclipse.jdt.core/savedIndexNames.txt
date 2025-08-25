@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+D:\CIBERTEC\Introducción a la Algoritmia\com.proyecto.final\.metadata\.plugins\org.eclipse.jdt.core
+424660856.index
+2781356296.index

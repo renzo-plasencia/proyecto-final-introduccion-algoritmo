@@ -1,0 +1,160 @@
+package proyecto_inmuebles;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+public class ModificarPrecio extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtNuevaArea;
+	private JTextField txtLargo;
+	private JTextField txtAncho;
+	private JComboBox cboModelo;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ModificarAreaTerrenos frame = new ModificarAreaTerrenos();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ModificarPrecio() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 380, 328);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Modificar Precio Terrenos");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(10, 11, 251, 22);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(98, 249, 89, 23);
+		contentPane.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrar();
+			}
+		});
+		btnCancelar.setBounds(203, 249, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JLabel lblModelo = new JLabel("\u00C1rea Original");
+		lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblModelo.setBounds(22, 57, 89, 22);
+		contentPane.add(lblModelo);
+		
+		JLabel lblLargo = new JLabel("Nueva \u00C1rea");
+		lblLargo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblLargo.setBounds(22, 103, 89, 22);
+		contentPane.add(lblLargo);
+		
+		JLabel lblAncho = new JLabel("Largo");
+		lblAncho.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAncho.setBounds(22, 149, 89, 22);
+		contentPane.add(lblAncho);
+		
+		txtNuevaArea = new JTextField();
+		txtNuevaArea.setEditable(false);
+		txtNuevaArea.setBounds(115, 104, 216, 20);
+		contentPane.add(txtNuevaArea);
+		txtNuevaArea.setColumns(10);
+		
+		cboModelo = new JComboBox();
+		cboModelo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double largo,ancho,precio;
+				int modelo;
+				modelo = cboModelo.getSelectedIndex();
+				
+				switch(modelo) {
+					case 0:
+						largo = Tienda.largo0;
+						ancho = Tienda.ancho0;
+						break;
+					case 1:
+						largo = Tienda.largo1;
+						ancho = Tienda.ancho1;
+						break;
+					case 2:
+						largo = Tienda.largo2;
+						ancho = Tienda.ancho2;
+						break;
+					default:
+						largo = 0;
+						ancho = 0;
+						break;
+				}
+				
+				txtAncho.setText(String.valueOf(ancho));
+				txtLargo.setText(String.valueOf(largo));
+				
+				
+				
+			}
+		});
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"120m2", "90m2", "72m2"}));
+		cboModelo.setBounds(113, 57, 218, 23);
+		contentPane.add(cboModelo);
+		
+		
+		txtLargo = new JTextField();
+		txtLargo.setColumns(10);
+		txtLargo.setBounds(115, 150, 216, 20);
+		contentPane.add(txtLargo);
+		
+		JLabel lblAncho_1 = new JLabel("Ancho");
+		lblAncho_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAncho_1.setBounds(22, 195, 89, 22);
+		contentPane.add(lblAncho_1);
+		
+		txtAncho = new JTextField();
+		txtAncho.setColumns(10);
+		txtAncho.setBounds(115, 196, 216, 20);
+		contentPane.add(txtAncho);
+		
+		cboModelo.setSelectedIndex(0);
+	}
+	
+	
+	
+	void cerrar() {
+		int respuesta;
+		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificación?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+		
+		if (respuesta == 0) {
+			dispose();
+		}
+	}
+}

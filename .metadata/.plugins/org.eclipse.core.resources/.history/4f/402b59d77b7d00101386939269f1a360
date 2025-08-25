@@ -1,0 +1,187 @@
+package proyecto_inmuebles;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+public class ModificarPrecioM extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtPrecio;
+	private JComboBox cboModelo;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ModificarPrecioM frame = new ModificarPrecioM();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ModificarPrecioM() {
+		setTitle("Modificar Precio m2");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 379, 231);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Modificar Precio m\u00B2");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(10, 11, 251, 22);
+		contentPane.add(lblNewLabel);
+		
+		
+		JLabel lblModelo = new JLabel("Distrito");
+		lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblModelo.setBounds(22, 57, 89, 22);
+		contentPane.add(lblModelo);
+		
+		JLabel lblAncho = new JLabel("Precio m\u00B2");
+		lblAncho.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAncho.setBounds(22, 104, 89, 22);
+		contentPane.add(lblAncho);
+		
+		cboModelo = new JComboBox();
+		cboModelo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double precio;
+				int modelo;
+				modelo = cboModelo.getSelectedIndex();
+				
+				switch(modelo) {
+					case 0:
+						precio = Tienda.distrito0;
+						break;
+					case 1:
+						precio = Tienda.distrito1;
+						break;
+					case 2:
+						precio = Tienda.distrito1;
+						break;
+					default:
+						precio = 0;
+						break;
+				}
+				
+				txtPrecio.setText(String.valueOf(precio));			
+			}
+		});
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Distrito 1", "Distrito 2", "Distrito 3"}));
+		cboModelo.setBounds(113, 57, 218, 23);
+		contentPane.add(cboModelo);
+		
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setColumns(10);
+		txtPrecio.setBounds(115, 105, 216, 20);
+		contentPane.add(txtPrecio);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double largo,ancho;
+				int modeloAnterior;
+				String modeloNuevo;
+				
+				int respuesta;
+				
+				respuesta = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos modificados?", "Guardar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+				
+				if (respuesta == 0) {
+				
+					largo =  Double.parseDouble(txtPrecio.getText());
+					
+					modeloNuevo = nombreNuevaArea(largo,ancho);
+					
+					// Comprobaciones
+					
+					modeloAnterior = cboModelo.getSelectedIndex();
+					
+					switch(modeloAnterior) {
+						case 0:
+							Tienda.modelo0 = modeloNuevo;
+							Tienda.largo0 = largo;
+							break;
+						case 1:
+							Tienda.modelo1 = modeloNuevo;
+							Tienda.largo1 = largo;
+							break;
+						case 2:
+							Tienda.modelo2 = modeloNuevo;
+							Tienda.largo2 = largo;
+							break;
+						default:
+							modeloNuevo = "";
+							largo = 0.0;
+							ancho = 0.0;
+							break;
+					}
+					dispose();
+				}
+			}
+		});
+		btnGuardar.setBounds(87, 147, 89, 23);
+		contentPane.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrar();
+			}
+		});
+		btnCancelar.setBounds(192, 147, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		cboModelo.setSelectedIndex(0);
+	}
+	
+	
+	/*
+	 * MÉTODOS 
+	 */
+	void cerrar() {
+		int respuesta;
+		respuesta = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificación?", "Cancelar",JOptionPane.OK_OPTION,JOptionPane.CANCEL_OPTION);
+		
+		if (respuesta == 0) {
+			dispose();
+		}
+	}
+	
+	double calcularArea(double largo, double ancho) {
+		return largo * ancho;
+	}
+	
+	String nombreNuevaArea(double largo, double ancho) {
+		double nuevaArea;
+		nuevaArea = calcularArea(largo, ancho);
+		
+		return (nuevaArea + " metros²");
+	}
+}
